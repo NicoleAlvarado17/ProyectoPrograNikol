@@ -6,6 +6,9 @@ import fidecompro.service.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class FacturaFrame extends JFrame {
     private ClienteService cServ = new ClienteService();
@@ -50,6 +53,7 @@ public class FacturaFrame extends JFrame {
         add(pSur, BorderLayout.SOUTH);
 
       // AL PULSAR AGREGAR
+      
         btnAgregar.addActionListener(e -> {
             Producto prod = (Producto) cbProductos.getSelectedItem();
             int qty;
@@ -68,6 +72,7 @@ public class FacturaFrame extends JFrame {
                   ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);}
         });
         // Al pulsar “Generar Factura”:
+        
         btnGenerar.addActionListener(e -> {
             if (model.getRowCount() == 0) {
                 JOptionPane.showMessageDialog(this,
@@ -99,6 +104,49 @@ public class FacturaFrame extends JFrame {
                 JOptionPane.showMessageDialog(this,
                   "Factura #" + f.getId() +
                   " generada. Total: $" + f.calcularTotal());
+                
+                
+                //factura en txt
+
+               int id = f.getId();
+        String fileName = "Factura_" + id + ".txt";
+
+        try (FileWriter fw = new FileWriter(fileName);
+             PrintWriter pw = new PrintWriter(fw)) {
+
+            // Encabezado
+            pw.println("FIDECOMPRO");
+            pw.println("Factura #" + id);
+            pw.println("Fecha: " + f.getFecha());
+            pw.println("Cliente: " + f.getCliente().getNombre());
+            pw.println("======================================");
+
+            // Detalles
+            pw.printf("%-5s %-20s %5s %10s%n",
+                "Cant", "Producto", "Precio", "Subtotal");
+            for (Detalle d : f.getDetalles()) {
+                pw.printf("%-5d %-20s %5.2f %10.2f%n",
+                    d.getCantidad(),
+                    d.getProducto().getNombre(),
+                    d.getProducto().getPrecio(),
+                    d.getSubtotal());
+            }
+            pw.println("======================================");
+            pw.printf("TOTAL: %.2f%n", f.calcularTotal());
+
+            pw.flush();
+            JOptionPane.showMessageDialog(this,
+                "Factura exportada a:\n" + fileName,
+                "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException io) {
+            JOptionPane.showMessageDialog(this,
+                "No se pudo generar el TXT:\n" + io.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        } 
+                
+                
+            
                 model.setRowCount(0);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this,
