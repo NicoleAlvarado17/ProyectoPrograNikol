@@ -1,79 +1,49 @@
 package fidecompro;
-
 import java.io.Serializable;
 
 public class Producto implements Serializable{
-   private static final long serialVersionUID = 1L;
-   
+   private static final long serialVersionUID = 1L; 
     private int id;
     private String nombre;
     private double precio;
     private int stock;
-
     public Producto(int id, String nombre, double precio, int stock) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
-        this.stock = stock;
-    }
+        this.stock = stock;}
 
     public int getId() {
-        return id;
-    }
-
+        return id;}
     public void setId(int id) {
-        this.id = id;
-    }
-
+        this.id = id;}
     public String getNombre() {
-        return nombre;
-    }
-
+        return nombre;}
     public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+        this.nombre = nombre;}
     public double getPrecio() {
-        return precio;
-    }
-
+        return precio;}
     public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
+        this.precio = precio;}
     public int getStock() {
-        return stock;
-    }
-
+        return stock;}
     public void setStock(int stock) {
         this.stock = stock;
     }
-
     public void actualizarStock(int cantidad) throws StockInsuficienteException {
         if (cantidad > stock) {
             throw new StockInsuficienteException(
                     "stock insuficiente para" + nombre);
         }
-        stock -= cantidad;
-    }
-
+        stock -= cantidad;}
     private static class StockInsuficienteException extends Exception {
-
         public StockInsuficienteException() {
-            super();
-        }
-
+            super();}
         public StockInsuficienteException(String mensaje) {
-            super(mensaje);
-        }
-    }
+            super(mensaje);}}
 
     @Override
     public String toString() {
         return id + "-" + nombre+ ", precio=" + precio + '}';
-    }
-
-    
-    
-    
+    } 
 }

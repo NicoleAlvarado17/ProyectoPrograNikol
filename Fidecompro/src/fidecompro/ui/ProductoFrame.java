@@ -1,6 +1,5 @@
 
 package fidecompro.ui;
-
 import fidecompro.Producto;
 import fidecompro.service.ProductoService;
 import javax.swing.*;
