@@ -1,0 +1,11 @@
+FIDECOMPRO
+Factura #4
+Fecha: 2025-07-08
+Cliente: andres
+======================================
+Cant  Producto             Precio   Subtotal
+2     pasta dientes        2500,00    5000,00
+3     pastilla para inodoro 450,00    1350,00
+1     detergente           5800,00    5800,00
+======================================
+TOTAL: 12150,00

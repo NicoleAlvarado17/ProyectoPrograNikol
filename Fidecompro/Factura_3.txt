@@ -1,0 +1,11 @@
+FIDECOMPRO
+Factura #3
+Fecha: 2025-07-08
+Cliente: jean carlo
+======================================
+Cant  Producto             Precio   Subtotal
+1     cloro                1200,00    1200,00
+2     desinfectante        2500,00    5000,00
+1     pasta dientes        2500,00    2500,00
+======================================
+TOTAL: 8700,00
