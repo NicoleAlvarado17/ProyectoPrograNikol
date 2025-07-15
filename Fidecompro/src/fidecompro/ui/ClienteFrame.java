@@ -10,30 +10,37 @@ import java.awt.*;
 
 public class ClienteFrame extends JFrame {
 
+    private static final long serialVersionUID = 1L;
+
+    // 1) Usamos el singleton en lugar de `new`
     private ClienteService service = ClienteService.getInstance();
-    // Ahora incluimos la columna "Teléfono"
+
+    // Colocamos la columna "Teléfono"
     private DefaultTableModel model
             = new DefaultTableModel(new Object[]{"ID", "Usuario", "Nombre", "Teléfono"}, 0);
 
     public ClienteFrame() {
         super("Gestión de Clientes");
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(5, 5));
 
+        // Tabla y scroll
         JTable table = new JTable(model);
         refreshTable();
         add(new JScrollPane(table), BorderLayout.CENTER);
 
+        // Botón Nuevo Cliente
         JButton btnAdd = new JButton("Nuevo Cliente");
         add(btnAdd, BorderLayout.SOUTH);
-        btnAdd.addActionListener(e -> {
-            // Pedimos todos los datos, incluida la validación de teléfono
-            String idS = JOptionPane.showInputDialog("ID:");
-            String u = JOptionPane.showInputDialog("Usuario:");
-            String c = JOptionPane.showInputDialog("Contraseña:");
-            String n = JOptionPane.showInputDialog("Nombre:");
-            String tel = JOptionPane.showInputDialog("Teléfono (8 dígitos):");
 
-            // Validación HU‑003: teléfono de 8 dígitos
+        btnAdd.addActionListener(e -> {
+            // Pedimos datos
+            String idS = JOptionPane.showInputDialog(this, "ID:");
+            String u = JOptionPane.showInputDialog(this, "Usuario:");
+            String c = JOptionPane.showInputDialog(this, "Contraseña:");
+            String n = JOptionPane.showInputDialog(this, "Nombre:");
+            String tel = JOptionPane.showInputDialog(this, "Teléfono (8 dígitos):");
+
+            // Validación teléfono (HU‑003)
             if (tel == null || !tel.matches("\\d{8}")) {
                 JOptionPane.showMessageDialog(this,
                         "El teléfono debe tener exactamente 8 dígitos numéricos.",
@@ -42,15 +49,18 @@ public class ClienteFrame extends JFrame {
             }
 
             try {
-                service.agregar(new Cliente(
-                        Integer.parseInt(idS),
-                        u, c, n,
-                        tel // suponiendo que tu constructor acepta teléfono en este parámetro
-                ));
+                // Parseo ID y constructor de 5 parámetros
+                int id = Integer.parseInt(idS.trim());
+                service.agregar(new Cliente(id, u, c, n, tel,"."));
                 refreshTable();
+            } catch (NumberFormatException nf) {
+                JOptionPane.showMessageDialog(this,
+                        "El ID debe ser un número válido.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
             } catch (EntidadDuplicadaException ex) {
                 JOptionPane.showMessageDialog(this,
-                        ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        ex.getMessage(),
+                        "Error de duplicado", JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -59,12 +69,22 @@ public class ClienteFrame extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    /**
+     * Refresca los datos en la tabla
+     */
     private void refreshTable() {
         model.setRowCount(0);
         service.listar().forEach(c
                 -> model.addRow(new Object[]{
-            c.getId(), c.getUsuario(), c.getNombre(), c.getTelefono()
+            c.getId(),
+            c.getUsuario(),
+            c.getNombre(),
+            c.getTelefono()
         })
         );
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new ClienteFrame().setVisible(true));
     }
 }
