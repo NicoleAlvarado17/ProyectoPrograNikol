@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class ClienteFrame extends JFrame {
 
-    private ClienteService service = ClienteService.getInstance();
+    private ClienteService service = ClienteService.getIns();
     // Ahora incluimos la columna "Teléfono"
     private DefaultTableModel model
             = new DefaultTableModel(new Object[]{"ID", "Usuario", "Nombre", "Teléfono"}, 0);
