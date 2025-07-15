@@ -4,10 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/ui/LoginFrame.java</file>
-            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/Cliente.java</file>
-            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/Detalle.java</file>
-            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/Factura.java</file>
-            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/Producto.java</file>
+            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/persistence/UsuarioDAO.java</file>
+            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/service/UsuarioService.java</file>
+            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/ui/UsuarioFrame.java</file>
+            <file>file:/C:/Users/Nicole%20Alvarado/OneDrive/Desktop/Progra%20Cliente-SERVIDOR/gitcodigo2/ProyectoPrograNikol/ProyectoPrograNikol/Fidecompro/src/fidecompro/ui/ClienteFrame.java</file>
         </group>
     </open-files>
 </project-private>

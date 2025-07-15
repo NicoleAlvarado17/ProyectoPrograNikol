@@ -9,7 +9,7 @@ public class Usuario implements Serializable {
     private String contraseña;
     private String rol;
 
-    public Usuario(String usuario, String contraseña) {
+    public Usuario(String usuario, String contraseña, String rol) {
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.rol = rol;
