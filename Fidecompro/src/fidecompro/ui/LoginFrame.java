@@ -2,6 +2,7 @@
 package fidecompro.ui;
 
 import fidecompro.Usuario;
+
 import javax.swing.*;
 
 public class LoginFrame extends JFrame {
