@@ -8,14 +8,17 @@ public class Cliente extends Usuario implements Serializable{
     private String nombre;
     private String direccion;
     private String telefono;
-  
-    public Cliente(int id,String usuario, String contraseña,String nombre,String direccion,String telefono) {
-        super(usuario, contraseña);
+
+    public Cliente(int id, String usuario,String contraseña,String nombre, String telefono,
+            String direccion, String rol) {
+        super(usuario, contraseña, rol);
         this.id = id;
         this.nombre = nombre;
-        this.direccion = direccion;
         this.telefono = telefono;
+        this.direccion = direccion;
     }
+  
+  
     public int getId() {
         return id;
     }
