@@ -8,9 +8,9 @@ public class LoginFrame extends JFrame {
     private JTextField tfUsuario = new JTextField(15);
     private JPasswordField pfContra = new JPasswordField(15);
 
-    public LoginFrame() {
+    public LoginFrame() {   //usuario admin  contraseña 123
         super("Login");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);  
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         add(new JLabel("Usuario:")); add(tfUsuario);
         add(new JLabel("Contraseña:")); add(pfContra);
