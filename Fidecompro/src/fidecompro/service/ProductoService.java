@@ -10,7 +10,7 @@ public class ProductoService implements ServicioCRUD<Producto> {
     private static final ProductoService instancia = new ProductoService();
     public static ProductoService getInstance() { return instancia; }
     private final ProductoDAO dao = new ProductoDAO();
-    private ProductoService() { }
+    public ProductoService() { }
 
     @Override
     public void agregar(Producto p) throws EntidadDuplicadaException {
