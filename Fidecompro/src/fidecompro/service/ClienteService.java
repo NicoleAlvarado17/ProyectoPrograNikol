@@ -14,7 +14,7 @@ public class ClienteService implements ServicioCRUD<Cliente> {
         return instancia;
     }
 
-    private ClienteService() {
+    public ClienteService() {
     }
 
     /**

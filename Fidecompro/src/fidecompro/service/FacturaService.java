@@ -13,14 +13,19 @@ import java.util.List;
 public class FacturaService {
 
     private FacturaDAO dao = new FacturaDAO();
+    public static FacturaService getInstance() {  
+        FacturaService instancia = null;
+return instancia; }
 
     // Método existente para generar y guardar la factura
     public void generarFactura(Factura f) throws EntidadDuplicadaException {
-        List<Factura> lista = dao.loadAll();
+        List<Factura> lista = dao.cargar();
         if (lista.stream().anyMatch(x -> x.getId() == f.getId())) {
             throw new EntidadDuplicadaException("Factura ya existe: " + f.getId());
         }
         lista.add(f);
-        dao.saveAll(lista);
+        dao.guardar(lista);
     
 }
+}
+

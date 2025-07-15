@@ -1,6 +1,7 @@
 package fidecompro.ui;
 
 import fidecompro.Producto;
+import fidecompro.exception.EntidadDuplicadaException;
 import fidecompro.service.ProductoService;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
