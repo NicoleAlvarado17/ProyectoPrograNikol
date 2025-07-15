@@ -14,7 +14,7 @@ public class UsuarioService {
 
     public void crearUsuario(String username, String password, String rol)
             throws EntidadDuplicadaException {
-        Usuario u = new Usuario(username, password, rol);
+        Usuario u = new Usuario(username, password);
         dao.crear(u);
     }
 

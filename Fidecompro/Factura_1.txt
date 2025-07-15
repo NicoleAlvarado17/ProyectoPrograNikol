@@ -1,11 +1,11 @@
 FIDECOMPRO
 Factura #1
 Fecha: 2025-07-14
-Cliente: nicole
+Cliente: sofia
 ======================================
 Cant  Producto             Precio   Subtotal
+1     cloro                1200,00    1200,00
 1     detergente           5800,00    5800,00
-1     desinfectante        2500,00    2500,00
-1     pasta dientes        2500,00    2500,00
+2     pastilla para inodoro 450,00     900,00
 ======================================
-TOTAL: 10800,00
+TOTAL: 7900,00
