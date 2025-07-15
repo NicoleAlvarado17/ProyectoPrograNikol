@@ -4,31 +4,40 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class GenericDAO<T> {
+public abstract class GenericDAO<T extends Serializable> {
 
-    private String fileName;
+    private final String archivo;
 
-    protected GenericDAO(String fileName) {
-        this.fileName = fileName;
+    protected GenericDAO(String archivo) {
+        this.archivo = archivo;
     }
 
+    /**
+     * Lee y devuelve la lista de objetos T desde el fichero. Si no existe aún,
+     * devuelve lista vacía.
+     */
     @SuppressWarnings("unchecked")
-    public List<T> loadAll() {
-        File f = new File(fileName);
+    public List<T> cargar() {
+        File f = new File(archivo);
         if (!f.exists()) {
             return new ArrayList<>();
         }
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(f))) {
-            return (List<T>) in.readObject();
-        } catch (Exception e) {
+        try (ObjectInputStream ois
+                = new ObjectInputStream(new FileInputStream(f))) {
+            return (List<T>) ois.readObject();
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
     }
 
-    public void saveAll(List<T> data) {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
-            out.writeObject(data);
+    /**
+     * Sobrescribe el fichero con la lista completa de objetos T.
+     */
+    public void guardar(List<T> lista) {
+        try (ObjectOutputStream oos
+                = new ObjectOutputStream(new FileOutputStream(archivo))) {
+            oos.writeObject(lista);
         } catch (IOException e) {
             e.printStackTrace();
         }
