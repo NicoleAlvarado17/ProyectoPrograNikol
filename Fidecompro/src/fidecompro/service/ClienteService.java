@@ -7,18 +7,14 @@ import java.util.List;
 
 public class ClienteService implements ServicioCRUD<Cliente> {
 
-    // Singleton
     private static final ClienteService instancia = new ClienteService();
     private final ClienteDAO dao = new ClienteDAO();
 
-    private ClienteService() {
-    }
-
-    /**
-     * Obtiene la instancia única de ClienteService
-     */
     public static ClienteService getInstance() {
         return instancia;
+    }
+
+    private ClienteService() {
     }
 
     /**
@@ -50,7 +46,6 @@ public class ClienteService implements ServicioCRUD<Cliente> {
     /**
      * Actualiza un cliente existente
      */
-
     public void actualizar(Cliente c) {
         List<Cliente> lista = dao.cargar();
         for (int i = 0; i < lista.size(); i++) {
@@ -65,10 +60,10 @@ public class ClienteService implements ServicioCRUD<Cliente> {
     /**
      * Elimina un cliente por ID
      */
-
     public void eliminar(Cliente c) {
         List<Cliente> lista = dao.cargar();
         lista.removeIf(x -> x.getId() == c.getId());
         dao.guardar(lista);
     }
+
 }
